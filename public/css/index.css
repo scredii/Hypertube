@@ -1,0 +1,117 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 150px;
+  margin-bottom: 95px;
+}
+#btn-genre
+{
+  margin: 1vmin;
+}
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1250px; /* or 950px */
+}
+
+.navbar-header {
+    padding-top: 15px;
+    text-align: center;
+    width: 100%;
+}
+.nav.navbar-nav.navbar-right{
+  display: block;
+}
+.navbar-default .navbar-brand {
+  float:none;
+}
+
+#profilePic {
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.jumbotronWithForm {
+  text-align: center;
+}
+
+.thumbnail {
+    margin-left: 3%;
+}
+
+.thumbnail p, .thumbnail h3 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.seen {
+    border: 1px solid tomato;
+}
+
+.inactive {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.container {
+    overflow: hidden;
+}
+
+.filterDiv {
+    display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+    display: block;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.watchBtn{
+margin-left : 10px;
+margin-bottom: 30px;
+}
+
+.thumbnail{
+  padding: 20px !important;
+}
+
+.btn-success{
+  background-color:transparent;
+  border-color: #a90d0d;
+}
+.btn-success:hover{
+  background-color:#a90d0d;
+  border-color: #a90d0d;
+  
+}

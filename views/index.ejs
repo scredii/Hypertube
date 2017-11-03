@@ -1,0 +1,46 @@
+<% include partials/header %>
+
+<div class="jumbotron">
+	<div class="row">
+		<div class="input-group">
+			<input type="text" class="form-control" name="query" id="query" placeholder="Search a movie or a serie...">
+			<span class="input-group-btn">
+			<button class="btn btn-default" type="button" onclick="getData_query(document.getElementById('query').value)"><i class="fa fa-search"></i></button>
+			</span>
+		</div>
+		<div class="input-group">
+			<span class="input-group-btn">
+				<center>
+					<button id="btn-genre" class="btn btn-default" type="button" onclick="filterSelection('Comedy')" name="category">Comedy</button>
+					<button id="btn-genre" class="btn btn-default" type="button" onclick="filterSelection('Action')" name="category">Action</button>
+					<button id="btn-genre" class="btn btn-default" type="button" onclick="filterSelection('Drama')" name="category">Drama</button>
+					<button id="btn-genre" class="btn btn-default" type="button" onclick="filterSelection('Animation')" name="category">Animation</button>
+					<button id="btn-genre" class="btn btn-default" type="button" onclick="filterSelection('Thriller')" name="category">Thriller</button>
+					<button id="btn-genre" class="btn btn-default" type="button" onclick="filterSelection('Fantasy')" name="category">Fantasy</button>
+					<br/>
+					<button id="btn-genre" class="btn btn-default" type="button" onclick="filterSelection('Movie')" name="category" style="margin-bottom:20px;"><span class="fa fa-film"></span> Movies</button>
+					<button id="btn-genre" class="btn btn-default" type="button" onclick="filterSelection('Serie')" name="category" style="margin-bottom:20px;"><span class="fa fa-video-camera"></span> Series</button>
+					<br/>
+					<br/>
+					
+				</center>
+			</span>
+		</div>
+		<div class="over container-fluid body-content movie-list">
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="loadModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body" align="center">
+				<div class="loader"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>var user = <%-JSON.stringify(user)%></script>
+<script src="/js/suggestion.js"></script>
+<script src="/js/search_bar.js"></script>
+
+<% include partials/footer %>

@@ -1,0 +1,67 @@
+<%include ../partials/header%>
+<link rel="stylesheet" type="text/css" href="/css/movie.css"/>
+<div class="embed-responsive embed-responsive-16by9">
+  <video id="video" class="video" src="http://localhost:3030/video?path=<%=path%>" controls="controls" controlsList="nodownload" autoplay="false" >
+	<% if (user.language == "francais" && path_sub_fr != "indisp." && path_sub_en != "indisp.") { %>
+		<track label="English" kind="captions" srclang="en" src="<%=path_sub_en%>" >
+		<track label="French" kind="captions" srclang="fr" src="<%=path_sub_fr%>" default>
+	<% } else if (user.language == "francais" && path_sub_fr != "indisp.") { %>
+		<track label="French" kind="captions" srclang="fr" src="<%=path_sub_fr%>" default>
+	<% } else if (user.language == "francais" && path_sub_en != "indisp.") { %>
+		<track label="English" kind="captions" srclang="en" src="<%=path_sub_en%>" default>
+	<% } else if (user.language == "english" && path_sub_fr != "indisp." && path_sub_en != "indisp.") { %>
+		<track label="English" kind="captions" srclang="en" src="<%=path_sub_en%>" default>
+		<track label="French" kind="captions" srclang="fr" src="<%=path_sub_fr%>" >
+	<% } else if (user.language == "english" && path_sub_en != "indisp.") { %>
+		<track label="English" kind="captions" srclang="en" src="<%=path_sub_en%>" default>
+	<% } else if (user.language == "english" && path_sub_fr != "indisp.") { %>
+		<track label="French" kind="captions" srclang="fr" src="<%=path_sub_fr%>" default>
+	<% } else { %>
+		<!-- API did not give any subtitle. -->
+	<% } %>
+  </video>
+   <!-- <button id="subtitles" type="button" data-state="subtitles">CC</button> -->
+<div class="progress" id="progress">
+<div class="progress-bar" id="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+</div>
+<p id="progress">Veuillez patienter, la vidéo se lancera automatiquement...</p>
+</div>
+</div>
+
+<div class="jumbotron">
+	<div align="center">
+		<h2><%=title%></h2>
+		<h5>(<%=info.year%>)</h5>
+		<% if (locals.season && locals.episode && season != 0 && episode != 0) { %>
+			<h4>Season <%=season%> — Episode <%=episode%></h4>
+		<% } %>
+		<% if (locals.seeds && locals.leechs) { %>
+			<h5><span class="fa fa-arrow-circle-up"></span> Seeders <%=seeds%> — <span class="fa fa-arrow-circle-down"></span> Leechers <%=leechs%> — <span class="fa fa-area-chart"></span> Ratio: <%=(seeds/leechs).toFixed(3)%></h5>
+		<% } %>
+		<img src="<%=info.image%>" alt="<%=title%>" title="<%=title%>">
+	</div>
+	<br/>
+	<h4 id="description"><%=info.plot%></h4>
+	<h5><%=info.runtime%></h5>
+	<h5><%=info.rating%>/10</h5>
+	<hr width="42%">
+	<h5><u>Casting:</u> <%=info.cast%></h5>
+	<h5><u>Writer:</u> <%=info.writer%></h5>
+	<h5><u>Director:</u> <%=info.director%></h5>
+</div>
+<div class="jumbotron">
+  <h3>Comment Section</h3>
+  <form id="commentForm">
+    <input type="text" name="comment" class="form-control" id="newComment" required>
+    <input type="submit" value="new comment" class="btn btn-default">
+  </form><br>
+  <div id="commentSection">
+  </div>
+</div>
+<script src="https://cdn.socket.io/socket.io-1.4.0.js"></script>
+<script> var room = '<%=room%>',
+             user =  '<%=user.login%>';
+             link = '<%=link%>';
+</script>
+<script src="/js/download.js"></script>
+<%include ../partials/footer%>
